@@ -1,0 +1,24 @@
+<div class="container">
+    <h1 style="text-align: center; margin-top: 50px;">User</h1>
+    <form [formGroup]="formUser" (ngSubmit)="onhandelSubmit()" style="text-align: center;margin-top: 10px;">
+        <input type="text" placeholder="name" formControlName="name" style="border: 1px solid #ccc;" />
+        <div *ngIf="checkCategory['name'].invalid &&checkCategory['name'].dirty ">
+            <div *ngIf="checkCategory['name'].getError('required')" style="font-size: 10px; color: red;">
+                <span class="errormessage">Name không được để trống</span>
+            </div>
+        </div>
+        <input type="text" placeholder="email" formControlName="email" style="border: 1px solid #ccc;" />
+        <div *ngIf="checkCategory['email'].invalid &&checkCategory['email'].dirty ">
+            <div *ngIf="checkCategory['name'].getError('required')" style="font-size: 10px; color: red;">
+                <span class="errormessage">Email không được để trống</span>
+            </div>
+        </div>
+        <div>
+            <select formControlName="role">
+                <option value="admin">admin</option>
+                <option value="member">memder</option>
+            </select>
+        </div>
+        <button class="btn btn-danger" [disabled]="formUser.invalid" style="margin-top: 10px;">Update</button>
+    </form>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+    <h1 style="font-size: 30px; margin-top: 20px;">Sản phẩm yêu thích</h1>
+    <div class="col-md-11 mt-6">
+        <div class="row">
+            <div class="col-md-3 mt-6 mr-0" *ngFor="let item of favourites; index as i">
+                <div class="card h-[420px]" style="width:280px ;">
+                    <a routerLink="product/{{item._id}}">
+                        <img [src]="item.images" class="card-img-top p-2" style="object-fit: contain; height: 270px;"
+                            alt="item" />
+                        <h3 class="ml-4 mt-2 text-orange-700 font-semibold text-xl">{{item.name}}</h3>
+                    </a>
+                    <div class="card-body shadow-2xl rounded-lg ">
+
+                        <div class="card-button"
+                            style="text-align: center; display: flex; justify-content: space-around;">
+                            <button class="btn btn-outline-info"
+                                (click)="removeProductFromWishlist(this.id!, item._id)">Bỏ thích</button>
+                            <a href="#" class="btn btn-outline-danger">Mua ngay</a>
+                            <button class="btn btn-outline-primary" (click)="addToCart(item)">
+                                <i class="fa fa-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

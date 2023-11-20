@@ -1,0 +1,55 @@
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+
+                <th scope="col" class="px-6 py-3">
+                    <span class="">Image</span>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Product Name
+                </th>
+
+                <th scope="col" class="px-6 py-3">
+                    Price
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Price Sale
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor=" let item of test "
+                class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+
+                <td class="w-32 p-4">
+                    <img [src]="item.images" alt="Apple Watch">
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    <a routerLink="{{item._id}}">{{item.name}}</a>
+
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {{item.price | currency: "VND":true:'4.0-0' }} VND
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
+                    {{item.priceSale | currency: "VND":true:'4.0-0' }} VND
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" *ngIf="item.status===false">
+                    Hết hàng
+                </td>
+                <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white" *ngIf="item.status===true">
+                    Hoạt động
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>

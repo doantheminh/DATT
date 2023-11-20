@@ -1,0 +1,40 @@
+<h1 style="margin-top: 30px; font-size: 30px; margin-left: 90px;">Giỏ Hàng</h1>
+<table class="table" style="width: 90%; text-align: center; margin: 0 auto" *ngIf="this.carts.length>0">
+    <thead>
+        <tr>
+            <th scope=" col">#</th>
+            <th scope="col">Images</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">quantity</th>
+            <th scope="col">Thành tiền</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cart of carts ;index as i">
+            <td>{{i}}</td>
+            <td><img src="{{cart.images}}" width="50px" height="50px"></td>
+            <td>{{cart.name}}</td>
+            <td>{{cart.price | currency: "VND":true:'4.0-0' }} VND</td>
+            <td><input type="number" [value]="cart.quantity" style="text-align: center;" (change)="updateQTL(i,$event)">
+            </td>
+            <td>{{subtotal(cart) | currency: "VND":true:'4.0-0'}} VND</td>
+            <td><button (click)="removeCart(i)" class="btn btn-danger">Xóa</button></td>
+        </tr>
+
+    </tbody>
+
+</table>
+<div style=" width: 100%;text-align: center; margin:10px auto;" *ngIf="this.carts.length>0">
+    Tổng thanh toán: <span style="font-size: 20px;">{{this.totalPrice | currency:
+        "VND":true:'4.0-0'}} VNĐ </span><a routerLink="/" class="btn btn-success">Thanh toán</a>
+</div>
+<div *ngIf="this.carts.length ===0"
+    style="text-align: center; margin: 10px 0px 40px 0px; background-color: rgb(226, 167, 167);">
+    Giỏ hàng rỗng , <a href="/" style="color: rgb(70, 70, 211); text-decoration: underline;">mua hàng tại đây !</a>
+</div>
+<div style="text-align: center;margin: 40px 0px;" *ngIf="this.carts.length>0">
+    <a routerLink="/" class="btn btn-primary">tiếp tục mua hàng</a>
+    <button class="btn btn-danger" (click)="clearCart()">Xóa tất cả</button>
+</div>

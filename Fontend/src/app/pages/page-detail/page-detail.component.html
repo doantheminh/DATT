@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{product.name}}</h3>
+            <h6 class="card-subtitle">{{product.describe}}</h6>
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-6">
+                    <div class="white-box text-center"><img [src]="product.images" class="img-responsive"></div>
+                    <div class="flex mt-4">
+                        <img src="../../../assets/img/iPhone-14-thumb-do-600x600.jpg" width="100" alt="">
+                        <img src="../../../assets/img/iPhone-14-thumb-do-600x600.jpg" width="100" alt="">
+                        <img src="../../../assets/img/iPhone-14-thumb-do-600x600.jpg" width="100" alt="">
+                        <img src="../../../assets/img/iPhone-14-thumb-do-600x600.jpg" width="100" alt="">
+                        <img src="../../../assets/img/iPhone-14-thumb-do-600x600.jpg" width="100" alt="">
+
+
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-6">
+                    <h4 class="box-title mt-5">Mô tả Sản phẩm</h4>
+                    <p>{{product.describe}}</p>
+                    <h2 class="mt-5">
+                        ${{product.priceSale}}<small
+                            class="text-success ml-2 line-through ">(${{product.price}})</small>
+                    </h2>
+                    <button class="btn btn-dark btn-rounded mr-1" data-toggle="tooltip" title=""
+                        data-original-title="Add to cart">
+                        <i class="fa fa-shopping-cart"></i>
+                    </button>
+                    <button class="btn btn-primary btn-rounded">Mua ngay</button>
+                    <h3 class="box-title mt-5">Điểm nổi bật chính</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-check text-success"></i>Kết cấu chắc chắn</li>
+                        <li><i class="fa fa-check text-success"></i>Được thiết kế để phù hợp với xu hướng</li>
+                        <li><i class="fa fa-check text-success"></i>Hoàn hảo để phô trương những bộ sưu tập tuyệt vời
+                            của bạn</li>
+                    </ul>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h3 class="box-title mt-5">Thông tin chung</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-product">
+                            <tbody>
+                                <tr>
+                                    <td width="390">Thương hiệu</td>
+                                    <td>******</td>
+                                </tr>
+                                <tr>
+                                    <td>Điều kiện giao hàng</td>
+                                    <td>********</td>
+                                </tr>
+                                <tr>
+                                    <td>Phong cách</td>
+                                    <td>*******</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

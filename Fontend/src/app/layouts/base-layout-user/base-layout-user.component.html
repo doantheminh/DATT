@@ -1,0 +1,153 @@
+<header class="p-3 bg-dark text-white">
+  <div class="container" style="max-width: 1362px;">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <img width="100px" src="https://iweb.tatthanh.com.vn/pic/3/blog/images/logo-shop-dien-thoai-7.jpg" alt="">
+      </a>
+      <ul class="nav col-8 col-lg-auto me-lg-4 mb-2 justify-content-center mb-md-0">
+        <li><a href="#" class="nav-link px-2 text-secondary">Trang chủ</a></li>
+        <li><a href="#" class="nav-link px-2 text-white">Sản Phẩm</a></li>
+        <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+      </ul>
+
+      <div class="layout ">
+        <div class="position-relative mr-5">
+          <form class="col-5 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+            <input [(ngModel)]="searchValue" name="searchValue" type="search" class="form-control form-control-dark"
+              placeholder="Search..." aria-label="Search" (input)="onSearch()">
+          </form>
+          <div class="position-absolute w-100% mr-3 bg-white rounded " *ngIf="isShown"
+            (clickOutside)="onClickOutside()">
+
+            <div *ngFor="let item of products">
+
+              <a class="d-flex flex-wrap mb-1  " (click)="onClick(item)" routerLink="product/{{item._id}}">
+                <img width="50px" [src]="item.images" alt="">
+                <p class="p1 text-body">{{item.name}}</p>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <h1 *ngIf="userName; else links">Xin chào, {{ userName }}!</h1>
+      <button *ngIf="userName" type="button" (click)="logout()" class="btn btn-outline-primary ml-4">Log Out</button>
+      <a routerLink="admin" *ngIf="role === 'admin' && showAdmin" type="button"
+        class="btn btn-outline-primary ml-1">Admin</a>
+
+      <ng-template #links>
+        <div class="text-end">
+          <a routerLink="/signin"><button *ngIf="!userName" type="button"
+              class="btn btn-outline-light me-2">Login</button></a>
+          <a routerLink="/signup"><button *ngIf="!userName" type="button"
+              class="btn btn-warning text-white">Sign-up</button></a>
+        </div>
+      </ng-template>
+      <a routerLink="/favourite/{{this.id}}"><button type="button" class="btn btn-outline-danger text-white"
+          style="margin-left: 10px;">Yêu thích</button></a>
+      <a routerLink="/cart"><button type="button" class="btn btn-outline-info text-white" style="margin-left: 10px;">Giỏ
+          Hàng</button></a>
+    </div>
+  </div>
+</header>
+
+
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+<footer class="text-center text-lg-start text-white mt-4" style="background-color: #1c2331">
+
+  <section class="d-flex justify-content-between p-4" style="background-color: #6351ce">
+
+    <div class="me-5">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <div>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="text-white me-4">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </section>
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <div class="row mt-3">
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold">Hỗ Trợ - Dịch Vụ</h6>
+          <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+          <p class="text-white">
+            Hướng dẫn đặt hàng và thanh toán
+          </p>
+          <p class="text-white">
+            Điều khoản mua bán hàng hóa
+          </p>
+          <p class="text-white">
+            Phạm vi, điều khoản gói bảo hành mở rộng
+          </p>
+          <p class="text-white">
+            Câu hỏi thường gặp
+          </p>
+
+        </div>
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold">Thông Tin Liên Hệ</h6>
+          <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+          <p class="text-white">
+            Bán hàng Online
+          </p>
+          <p class="text-white">
+            Chăm sóc Khách Hàng
+          </p>
+          <p class="text-white">
+            Hỗ trợ Bảo hành & Sửa chữa
+          </p>
+          <p class="text-white">
+            BHợp tác kinh doanh
+          </p>
+        </div>
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold">Tìm cửa hàng</h6>
+          <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+          <p class="text-white">
+            296 Lĩnh Nam, Hoàng Mai, Hà Nội
+          </p>
+          <p class="text-white">
+            294 Trịnh Văn Bô, Nam Từ Liêm, Hà Nội
+          </p>
+          <p class="text-white">
+            282 Cầu Giấy, Hà Nội
+          </p>
+        </div>
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <h6 class="text-uppercase fw-bold">Liên hệ quảng cáo</h6>
+          <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
+          <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+          <p><i class="fas fa-envelope mr-3"></i> shopnhhm.com</p>
+          <p><i class="fas fa-phone mr-3"></i> 0866 838 640</p>
+          <p><i class="fas fa-print mr-3"></i> 0987292904</p>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+    © 2020 Copyright:
+    <a class="text-white">NHHMshopgmail.com</a>
+  </div>
+</footer>

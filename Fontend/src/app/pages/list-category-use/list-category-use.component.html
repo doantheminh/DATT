@@ -1,0 +1,46 @@
+<div class="container ">
+    <div class="row">
+        <div class="col-md-3 mt-14 w-[80px] ml-[-70px] mr-[70px]">
+            <!-- Danh mục -->
+            <h3 class=" text-xl font-semibold text-stone-500">Category:</h3>
+            <ul class="list-group" *ngFor="let cate of category">
+                <li class="list-group-item w-[150px]"><a routerLink="categorys/{{cate._id}} "
+                        (click)="onCategoryClick(cate._id)">{{cate.name}}</a></li>
+            </ul>
+        </div>
+        <div class="col-md-11 mt-6">
+            <div class="row">
+                <div class="col-md-3 mt-6 mr-0" *ngFor="let item of test; index as i">
+                    <div class="card h-[420px]" style="width:280px ;">
+                        <a routerLink="product/{{item._id}}">
+                            <img [src]="item.images" class="card-img-top p-2"
+                                style="object-fit: contain; height: 270px;" alt="..." />
+                            <h3 class="ml-4 mt-2 text-orange-700 font-semibold text-xl">{{item.name}}</h3>
+                        </a>
+                        <div class="card-body shadow-2xl rounded-lg ">
+                            <h5 class="card-title text-danger" *ngIf="item.priceSale !== 0">
+                                <span class="text-muted" style="text-decoration: line-through; margin-right: 4px;">
+                                    {{ formatCurrency(item.price) }}
+                                </span>
+                                {{ formatCurrency(item.priceSale ) }}
+                            </h5>
+                            <h5 class="card-title text-danger" *ngIf="item.priceSale === 0">
+                                {{ formatCurrency(item.price) }}
+                            </h5>
+                            <div class="card-button"
+                                style="text-align: center; display: flex; justify-content: space-around;">
+                                <button class="btn btn-outline-secondary">
+                                    <i class="fa fa-heart"></i>
+                                </button>
+                                <a href="#" class="btn btn-outline-danger">Mua ngay</a>
+                                <button class="btn btn-outline-primary" (click)="addToCart(item)">
+                                    <i class="fa fa-cart-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

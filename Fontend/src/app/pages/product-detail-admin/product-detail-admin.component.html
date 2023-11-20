@@ -1,0 +1,48 @@
+<section>
+    <div class="relative mx-auto max-w-screen-xl px-4 py-8">
+        <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2" *ngIf="product">
+            <div class="grid grid-cols-2 gap-4 md:grid-cols-1">
+                <img alt="Les Paul" [src]="product.images" class="aspect-square w-full rounded-xl object-cover" />
+
+
+            </div>
+
+            <div class="sticky top-0">
+
+
+                <div class="mt-8 flex justify-between">
+                    <div class="max-w-[35ch] space-y-2">
+                        <div class="flex items-center">
+                            <label class="mr-2 text-gray-400 sm:text-2xl">Name :</label>
+                            <h1 class="text-xl font-medium  sm:text-2xl">{{ product.name }}</h1>
+                        </div>
+                        <div class="flex items-center">
+                            <label class="mr-2 text-gray-400 sm:text-2xl ">Category:</label>
+                            <h1 class="text-xl font-medium mt-4 sm:text-2xl">{{ categoryName }}</h1>
+                        </div>
+                    </div>
+                    <div class="flex items-center t-0">
+                        <label class="mr-2 text-gray-400 text-lg">Price:</label>
+                        <div class="flex flex w-36">
+                            <p class="text-lg font-bold">${{product.priceSale}} </p>
+                            <p class="line-through leading-7 ml-2 text-gray-500">${{product.price}}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <div class="prose max-w-none">
+                        <label class="mr-2 sm:text-2xl text-gray-400">Description:</label>
+
+                        <p class="mt-2">
+                            {{product.describe}}
+                        </p>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>

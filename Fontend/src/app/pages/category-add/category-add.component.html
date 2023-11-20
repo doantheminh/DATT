@@ -1,0 +1,13 @@
+<div class="container">
+    <h1 style="text-align: center; margin-top: 50px;">Category</h1>
+    <form [formGroup]="formCategory" (ngSubmit)="onhandelSubmit()" style="text-align: center;margin-top: 10px;">
+        <input type="text" placeholder="Name Category" formControlName="name" style="border: 1px solid #ccc;" />
+        <br>
+        <div *ngIf="checkCategory['name'].invalid &&checkCategory['name'].dirty ">
+            <div *ngIf="checkCategory['name'].getError('required')" style="font-size: 10px; color: red;">
+                <span class="errormessage">Name không được để trống</span>
+            </div>
+        </div>
+        <button class="btn btn-danger" [disabled]="formCategory.invalid" style="margin-top: 10px;">Submit</button>
+    </form>
+</div>

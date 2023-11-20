@@ -1,0 +1,106 @@
+<form (ngSubmit)="onHandleSubmit()" [formGroup]="productAddForm">
+    <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
+        <form action="" class="space-y-4" (ngSubmit)="onHandleSubmit()" [formGroup]="productAddForm">
+            <div>
+                <label class="sr-only" for="name">Name</label>
+                <input class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Name" type="text" id="name"
+                    formControlName="name" />
+                <div *ngIf="checkForm['name'].invalid &&checkForm['name'].dirty ">
+                    <div *ngIf="checkForm['name'].getError('required')">
+                        <span class="errormessage">Name không được để trống</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                    <label class="sr-only" for="email">Price Sale</label>
+                    <input class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Price Sale" type="number"
+                        id="number" formControlName="priceSale" />
+                </div>
+
+                <div>
+                    <label class="sr-only" for="phone">Price</label>
+                    <input class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Price" type="number"
+                        id="phone" formControlName="price" />
+                    <div *ngIf="checkForm['price'].invalid &&checkForm['price'].dirty ">
+                        <div *ngIf="checkForm['price'].getError('required')">
+                            <span class="errormessage">Price không được để trống</span>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-3">
+                <div>
+                    <div>
+                        <label for="HeadlineAct" class="mr-24 block text-sm font-medium text-gray-900">
+                            Categorys
+                        </label>
+
+                        <select name="HeadlineAct" id="HeadlineAct" formControlName="categoryId"
+                            class="mt-1.5 w-full rounded-lg border-gray-300 text-gray-700 sm:text-sm">
+                            <option value="">Please select categorys</option>
+                            <option *ngFor="let item of categorys" [ngValue]="item._id">
+                                {{item.name}}
+                            </option>
+                            <div *ngIf="checkForm['categoryId'].invalid &&checkForm['categoryId'].dirty ">
+                                <div *ngIf="checkForm['categoryId'].getError('required')">
+                                    <span class="errormessage">categoryId không được để trống</span>
+                                </div>
+                            </div>
+
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Status</label>
+                    <select formControlName="status" class="form-control">
+                        <option value="">Trạng thái</option>
+                        <option value="true">Hoạt động</option>
+                        <option value="false">Hết hàng</option>
+                        <div *ngIf="checkForm['status'].invalid &&checkForm['status'].dirty ">
+                            <div *ngIf="checkForm['status'].getError('required')">
+                                <span class="errormessage">status không được để trống</span>
+                            </div>
+                        </div>
+                    </select>
+                </div>
+            </div>
+            <ngx-dropzone (change)="onSelectImage($event)" formControlName="images">
+                <h1 style="margin-left: 5px; font-size: 11px;">Upload Main</h1>
+                <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemovem(f)">
+                    <ngx-dropzone-label>
+                        {{ this.url| async}}
+                        {{f.name}}
+                    </ngx-dropzone-label>
+                </ngx-dropzone-preview>
+            </ngx-dropzone>
+
+
+            <div>
+                <label class="sr-only" for="message">Description</label>
+
+                <textarea class="w-full rounded-lg border-gray-200 p-3 text-sm" placeholder="Description"
+                    formControlName="describe" rows="8" id="message"></textarea>
+                <div *ngIf="checkForm['describe'].invalid &&checkForm['describe'].dirty ">
+                    <div *ngIf="checkForm['describe'].getError('required')">
+                        <span class="errormessage">describe không được để trống</span>
+                    </div>
+                    <div *ngIf="checkForm['describe'].getError('minlength')">
+                        <span class="errormessage">describe Trên 10 ký tự</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit"
+                    class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto">
+                    Add product
+                </button>
+            </div>
+        </form>
